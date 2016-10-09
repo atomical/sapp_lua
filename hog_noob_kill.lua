@@ -10,17 +10,12 @@ function OnScriptLoad()
   register_callback(cb["EVENT_VEHICLE_EXIT"], "EventVehicleExit")
   register_callback(cb["EVENT_DIE"], "EventVehicleExit")
   register_callback(cb["EVENT_LEAVE"], "EventVehicleExit")
-  register_callback(cb["EVENT_MAP_RESET"], "EventMapReset")
 end
 
 -- Events
 
 function VersionAnnounce(PlayerIndex)
-  say(PlayerIndex, "Hog Noob Killer 1.0.1b loaded...")
-end
-
-function EventMapReset()
-  say_all("Hog Noob Killer reloaded...")
+  say(PlayerIndex, "Vehicle Noob Killer 1.0.1b loaded...")
 end
 
 function EventVehicleEnter(PlayerIndex, Seat)
@@ -37,7 +32,7 @@ function EventHogNoobCheck(PlayerIndex, KilledIndex)
   if driverExists(PlayerIndex) then
     if player_alive(PlayerIndex) then
       kill(PlayerIndex)
-      say(PlayerIndex, "You were killed because you are a hog noob!")
+      say(PlayerIndex, "Vehicle noob!")
     end
   end
 end
