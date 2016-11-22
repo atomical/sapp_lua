@@ -7,9 +7,15 @@ function OnScriptLoad()
   register_callback(cb['EVENT_JOIN'], "VersionAnnounce")
   register_callback(cb['EVENT_KILL'], "EventHogNoobCheck")
   register_callback(cb["EVENT_VEHICLE_ENTER"], "EventVehicleEnter")
+
+  -- All conditions where we need to update the drivers array
   register_callback(cb["EVENT_VEHICLE_EXIT"], "EventVehicleExit")
   register_callback(cb["EVENT_DIE"], "EventVehicleExit")
   register_callback(cb["EVENT_LEAVE"], "EventVehicleExit")
+  register_callback(cb["EVENT_SUICIDE"], "EventVehicleExit")
+  register_callback(cb["EVENT_TEAM_SWITCH"], "EventVehicleExit")
+  register_callback(cb["EVENT_SPAWN"], "EventVehicleExit")
+
 end
 
 -- Events
@@ -32,7 +38,9 @@ function EventHogNoobCheck(PlayerIndex, KilledIndex)
   if driverExists(PlayerIndex) then
     if player_alive(PlayerIndex) then
       kill(PlayerIndex)
-      say(PlayerIndex, "Vehicle noob!")
+      rprint(PlayerIndex, "You were killed for being a vehicle noob!")
+      rprint(PlayerIndex, "You were killed for being a vehicle noob!")
+      rprint(PlayerIndex, "You were killed for being a vehicle noob!")
     end
   end
 end
