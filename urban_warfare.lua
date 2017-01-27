@@ -7,18 +7,47 @@ function OnScriptUnload() end
 function OnScriptLoad()
   register_callback(cb["EVENT_PRESPAWN"], "EventPreSpawn")
   register_callback(cb['EVENT_VEHICLE_ENTER'], "OnEnterVehicle")
+  register_callback(cb['EVENT_GAME_START'], "OnGameStart")
 end
 
 function EventPreSpawn(PlayerIndex)
   team = get_var(PlayerIndex, "$team")
   if team == "red" then
-    write_vector3d(get_dynamic_player(PlayerIndex) + 0x5C, 40.83292, 10.4025, 1)
-    spawn_object("weap", "reach\\objects\\weapons\\pistol\\magnum\\gold magnum", 40.83292, 10.4025, 2)
-    spawn_object("weap", "weapons\\gauss sniper\\gauss sniper", 40.83292, 10.4025, 2)
+    --write_vector3d(get_dynamic_player(PlayerIndex) + 0x5C, 40.83292, 10.4025, 1)
+    --spawn_object("weap", "reach\\objects\\weapons\\pistol\\magnum\\gold magnum", 40.83292, 10.4025, 2)
+    --spawn_object("weap", "weapons\\gauss sniper\\gauss sniper", 40.83292, 10.4025, 2)
+    write_vector3d(get_dynamic_player(PlayerIndex) + 0x5C, -50.60, 35.01, 6.17)
+    spawn_object("weap", "reach\\objects\\weapons\\pistol\\magnum\\gold magnum",  -50.60, 35.01, 6.17)
+    spawn_object("weap", "weapons\\gauss sniper\\gauss sniper",  -50.60, 35.01, 6.17)
+
   elseif team == "blue" then
-    write_vector3d(get_dynamic_player(PlayerIndex) + 0x5C, 6.92, -46.80, 3.21)
-    spawn_object("weap", "reach\\objects\\weapons\\pistol\\magnum\\gold magnum", 6.92, -46.80, 3.21)
+    --write_vector3d(get_dynamic_player(PlayerIndex) + 0x5C, 6.92, -46.80, 3.21)
+    --spawn_object("weap", "reach\\objects\\weapons\\pistol\\magnum\\gold magnum", 6.92, -46.80, 3.21)
+    write_vector3d(get_dynamic_player(PlayerIndex) + 0x5C, 121.33,-22.68,7)
+    spawn_object("weap", "reach\\objects\\weapons\\pistol\\magnum\\gold magnum", 121.33,-22.68,7)
+    spawn_object("weap", "weapons\\gauss sniper\\gauss sniper", 121.33,-22.68,7)
+
   end
+end
+
+function OnGameStart(PlayerIndex, Message)
+
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",-50.60, 37.01, 6.17,3.127) --Blue Base Front
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",-50.60, 36.01, 6.17,3.127) --Blue Base Front
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",-50.60, 34.01, 6.17,3.127) --Blue Base Front
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",-50.60, 33.01, 6.17,3.127) --Blue Base Front
+  
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",122.33,-22.68,7,3.127) --Blue Base Front
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",123.33,-22.68,7,3.127) --Blue Base Front
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",124.33,-22.68,7,3.127) --Blue Base Front
+  spawn_object("vehi","altis\\vehicles\\grackle\\grackle",125.33,-22.68,7,3.127) --Blue Base Front
+
+end
+
+
+function getout(PlayerIndex)
+ execute_command("vexit " .. PlayerIndex)
+ return false
 end
 
 --Function evaluates players vehilce and allows for specific actions to take place for specific vehilces
